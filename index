@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Form Pendaftaran Kenshuu Crypto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    h2 {
+      color: #a855f7;
+      margin-bottom: 20px;
+    }
+    form {
+      background-color: #111;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+      width: 100%;
+      max-width: 400px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+    input[type="text"],
+    input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      margin-top: 5px;
+      background-color: #222;
+      color: #fff;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #a855f7;
+      color: #fff;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #9333ea;
+    }
+    #result {
+      margin-top: 20px;
+      color: #00ff88;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Daftar Anggota Kenshuu Crypto</h2>
+  <form id="kcForm">
+    <label>Nama Lengkap</label>
+    <input type="text" name="nama" required>
+    <button type="submit">Daftar Sekarang</button>
+  </form>
+  <p id="result"></p>
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw3bKVxH7ONokarddVTjDYmvoAjaoVjwK7eTiaPl2NEXxN4kUwWxVO609D0Z4VKRYEn/exec';
+    const form = document.getElementById('kcForm');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      fetch(scriptURL, { method: 'POST', body: formData })
+        .then(response => response.text())
+        .then(result => {
+          document.getElementById('result').innerText = result;
+          form.reset();
+        })
+        .catch(error => {
+          document.getElementById('result').innerText = 'Terjadi kesalahan: ' + error;
+        });
+    });
+  </script>
+</body>
+</html>
