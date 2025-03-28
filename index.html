@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Form Pendaftaran Kenshuu Crypto</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -32,14 +32,14 @@
       margin-top: 15px;
       font-weight: 600;
     }
-    input[type="text"] {
+    input[type="text"], input[type="date"] {
       width: 100%;
       padding: 10px;
       border-radius: 6px;
       border: none;
       margin-top: 5px;
-      background-color: #222;
-      color: #fff;
+      background-color: #f1f5f9;
+      color: #000;
     }
     button {
       margin-top: 20px;
@@ -68,11 +68,15 @@
   <form id="kcForm">
     <label>Nama Lengkap</label>
     <input type="text" name="nama" required>
+
+    <label>Tanggal Lahir</label>
+    <input type="date" name="tgl_lahir" required>
+
     <button type="submit">Daftar Sekarang</button>
   </form>
   <p id="result"></p>
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbw3bKVxH7ONokarddVTjDYmvoAjaoVjwK7eTiaPl2NEXxN4kUwWxVO609D0Z4VKRYEn/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyBRZWQVT5Ev3S6evY_l6rKClKSuaQsi4uVVKPygouXNb0RDQdU7rVAJ9HG_xSUrh7X/exec';
     const form = document.getElementById('kcForm');
 
     form.addEventListener('submit', e => {
@@ -87,7 +91,7 @@
         .catch(error => {
           document.getElementById('result').innerText = 'Terjadi kesalahan: ' + error;
         });
-  });
+    });
   </script>
 </body>
 </html>
